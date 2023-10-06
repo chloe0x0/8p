@@ -6,3 +6,20 @@ A Discord bot for Torpedo Ted’s  Authentic Australian Steakhouse and Bar and G
 <p align='center'>
     <img src='./imgs/sc.png'>
 </p>
+
+
+## Commands
+
+To remove a target phrase (a phrase which triggers the bot to respond with :8p:) an admin can say
+
+```
+<PREFIX>remove_target <phrase>
+```
+
+To add a target phrase
+
+
+```
+<PREFIX>add_target <phrase>
+```
+
