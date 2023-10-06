@@ -29,7 +29,7 @@ class Cwient(discord.Client):
     def remove_target(self, args):
         if len(args) >= 2:
             to_remove = ' '.join(args[1:])
-            self.TARGETS = {k for k in self.TARGETS if k != to_remove}
+            self.TARGETS.remove(to_remove)
     async def on_message(self, message):
         if message.author.id == self.user.id:
             return
