@@ -6,6 +6,7 @@ import dotenv
 dotenv.load_dotenv()
 Discord_Token = os.getenv("DISCORD_TOKEN")
 Command_Prefix = os.getenv("PREFIX")
+Chloe_Id = int(os.getenv("CHLOE"))
 # Intents
 intents = discord.Intents.default()
 intents.message_content = True
@@ -32,12 +33,14 @@ class Cwient(discord.Client):
     async def on_message(self, message):
         if message.author.id == self.user.id:
             return
+        is_chloe = message.author.id == Chloe_Id
+        is_admin = message.author.guild_permissions.administrator
         # we will handle commands in this way for now
         if message.content.startswith(Command_Prefix):
             args = message.content.split(' ')
-            if args[0] == Command_Prefix+'add_target': self.add_target(args)
-            elif args[0] == Command_Prefix+'die': await self.close()
-            elif args[0] == Command_Prefix+'remove_target': self.remove_target(args)
+            if args[0] == Command_Prefix+'add_target' and is_admin: self.add_target(args)
+            elif args[0] == Command_Prefix+'die' and is_chloe: await self.close()
+            elif args[0] == Command_Prefix+'remove_target' and is_admin: self.remove_target(args)
        # If the message is in the targets, or uses a target emoji (8p), respond with 8p for that guild
         if message.content.lower() in self.TARGETS or self.contains_target_emoji(message):
             # get the 8p emote from the current guild (more robust than hardcoding its ID for Ted's Server)
