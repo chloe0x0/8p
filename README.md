@@ -27,3 +27,6 @@ for example
 <p align='center'>
     <img src='./imgs/wooyeah.png'>
 </p>
+
+
+The set of target phrases is stored on disk in src/targets.out, in this way it persists across sessions.
