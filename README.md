@@ -23,3 +23,7 @@ To add a target phrase
 <PREFIX>add_target <phrase>
 ```
 
+for example
+<p align='center'>
+    <img src='./imgs/wooyeah.png'>
+</p>
